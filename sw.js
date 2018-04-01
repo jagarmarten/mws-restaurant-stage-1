@@ -7,7 +7,7 @@ const cacheFiles = [
     './',
     './index.html',
     './restaurant.html',
-    './sw.js',
+    'sw.js',
     './data/restaurants.json',
     './css/styles.css',
     './js/dbhelper.js',
