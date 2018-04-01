@@ -65,40 +65,39 @@ self.addEventListener("activate", function (event) {
 });
 
 //fetching
-self.addEventListener('fetch', function (e) {
-    console.log('[ServiceWorker] Fetch', e.request.url);
+self.addEventListener('fetch', function (event) {
+    console.log("Fetch event");
 
-    // e.respondWidth Responds to the fetch event
-    e.respondWith(
+    // event.respondWidth Responds to the fetch event
+    event.respondWith(
         // Check in cache for the request being made
-        caches.match(e.request)
+        caches.match(event.request)
             .then(function (response) {
 
                 // If the request is in the cache
                 if (response) {
-                    console.log("[ServiceWorker] Found in Cache", e.request.url, response);
-                    // Return the cached version
+                    console.log("Something is in cache");
                     return response;
                 }
 
                 // If the request is NOT in the cache, fetch and cache
-
-                var requestClone = e.request.clone();
-                fetch(requestClone)
+                let clone = event.request.clone();
+                //fetch and cache
+                fetch(clone)
                     .then(function (response) {
                         if (!response) {
-                            console.log("[ServiceWorker] No response from fetch ")
+                            console.log("No response from fetch!")
                             return response;
                         }
 
-                        var responseClone = response.clone();
+                        let responseClone = response.clone();
 
                         //  Open the cache
                         caches.open(cacheName).then(function (cache) {
 
                             // Put the fetched response in the cache
-                            cache.put(e.request, responseClone);
-                            console.log('[ServiceWorker] New Data Cached', e.request.url);
+                            cache.put(event.request, responseClone);
+                            console.log("New Service worker data cached");
 
                             // Return the response
                             return response;
@@ -106,8 +105,10 @@ self.addEventListener('fetch', function (e) {
                         }); // end caches.open
                     })
                     .catch(function (err) {
-                        console.log('[ServiceWorker] Error Fetching & Caching New Data', err);
+                        console.log("Error Fetching and Caching new data!", err);
                     });
-            }) // end caches.match(e.request)
-    ); // end e.respondWith
+            }) // end caches.match(event.request)
+    ); // end event.respondWith
 });
+
+//this tutorials helped me the most: https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker-slides and https://www.youtube.com/watch?v=BfL3pprhnms
