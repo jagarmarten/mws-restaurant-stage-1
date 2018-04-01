@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -22,7 +22,7 @@
       </h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb">
+    <ul id="breadcrumb" aria-label="breadcrumb">
       <li>
         <a href="./" tabindex="0">Home</a>
       </li>
@@ -33,21 +33,21 @@
   <!-- End header -->
 
   <!-- Beginning main -->
-  <main id="maincontent">
+  <main id="maincontent" aria-label="content">
     <!--Skip map link-->
     <a href="#restaurant-container" class="skip-link">Skip the map</a>
     <!-- Beginning map -->
     <section role="application" id="map-container">
-      <div id="map"></div>
+      <div id="map" aria-hidden="true" role="application"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
-    <section id="restaurant-container" tabindex="-1">
+    <section id="restaurant-container" tabindex="-1" role="contentinfo">
       <h1 id="restaurant-name" tabindex="0"></h1>
       <img id="restaurant-img" tabindex="0">
       <p id="restaurant-cuisine" tabindex="0"></p>
       <p id="restaurant-address" tabindex="0" alt="Address: "></p>
-      <table role="presentation" id="restaurant-hours" alt="Times open:">
+      <table role="presentation" id="restaurant-hours" summary="Time openings of this restaurant">
       </table>
     </section>
     <!-- end restaurant -->
