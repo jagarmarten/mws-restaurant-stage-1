@@ -56,7 +56,9 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   address.innerHTML = restaurant.address;
 
   const image = document.getElementById('restaurant-img');
-  image.className = 'restaurant-img'
+  image.className = 'restaurant-img';
+  image.alt = restaurant.photographDescription;
+  image.title = restaurant.name + " - " + restaurant.photographDescription;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -77,6 +79,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
   const hours = document.getElementById('restaurant-hours');
   for (let key in operatingHours) {
     const row = document.createElement('tr');
+    row.tabIndex = "0";
 
     const day = document.createElement('td');
     day.innerHTML = key;
@@ -102,6 +105,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   if (!reviews) {
     const noReviews = document.createElement('p');
     noReviews.innerHTML = 'No reviews yet!';
+
     container.appendChild(noReviews);
     return;
   }
@@ -117,31 +121,47 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
+  li.tabindex = "0";
+
+  const reviewsBanner = document.createElement('div'); //creating the black banner with Name and date
+  reviewsBanner.className = 'reviews-banner'; //giving it a class
+  li.appendChild(reviewsBanner); //appending it to the li
+
   const name = document.createElement('p');
+  name.id = 'reviews-name';
   name.innerHTML = review.name;
-  li.appendChild(name);
+  reviewsBanner.appendChild(name);
 
   const date = document.createElement('p');
+  date.id = 'reviews-date';
   date.innerHTML = review.date;
-  li.appendChild(date);
+  reviewsBanner.appendChild(date);
+
+  const reviewsInfo = document.createElement('div'); //creating div which contains the rating and comment of the restaurant
+  reviewsInfo.className = 'reviews-info'; //giving it a class
+  li.appendChild(reviewsInfo); //appending it to the li
 
   const rating = document.createElement('p');
+  rating.id = 'rating';
   rating.innerHTML = `Rating: ${review.rating}`;
-  li.appendChild(rating);
+  reviewsInfo.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
-  li.appendChild(comments);
+  reviewsInfo.appendChild(comments);
 
+  li.tabIndex = "0";
   return li;
 }
 
 /**
  * Add restaurant name to the breadcrumb navigation menu
  */
-fillBreadcrumb = (restaurant=self.restaurant) => {
+fillBreadcrumb = (restaurant = self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
+  breadcrumb.tabIndex = "0";
   const li = document.createElement('li');
+  li.tabIndex = "0";
   li.innerHTML = restaurant.name;
   breadcrumb.appendChild(li);
 }
