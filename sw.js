@@ -2,16 +2,18 @@
 //service worker file
 
 //cacheName
-const cacheName = 'v3';
+const cacheName = 'v5';
 const cacheFiles = [
     './',
     './index.html',
     './restaurant.html',
+    './sw.js',
     './data/restaurants.json',
-    './css/main.css',
+    './css/styles.css',
     './js/dbhelper.js',
     './js/main.js',
     './js/restaurant_info.js',
+    './js/app.js/',
     'img/1.jpg',
     'img/2.jpg',
     'img/3.jpg',
