@@ -34,7 +34,7 @@ self.addEventListener("install", function (event) {
 //activating the service worker
 self.addEventListener("activate", function (event) {
     console.log("Service WorkeR Activated");
-
+    
     //we're now going to remove everything in cache that doesn't correspond the current cacheName
     event.waitUntil(
         //going throught all the keys in cache
