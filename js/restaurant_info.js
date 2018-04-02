@@ -56,7 +56,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   address.innerHTML = restaurant.address;
 
   const image = document.getElementById('restaurant-img');
-  image.className = 'restaurant-img';
+  image.className = 'restaurant-img'
   image.alt = restaurant.photographDescription;
   image.title = restaurant.name + " - " + restaurant.photographDescription;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
@@ -98,7 +98,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
-  const title = document.createElement('h4');
+  const title = document.createElement('h3');
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 
