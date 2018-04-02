@@ -1,3 +1,4 @@
+//photographDescription is used for <img> alt tags
 {
   "restaurants": [{
     "id": 1,
