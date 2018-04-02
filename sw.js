@@ -29,7 +29,7 @@ const cacheFiles = [
 
 //installing the service worker
 self.addEventListener("install", function (event) {
-    console.log("Service WorkeR Installed");
+    console.log("Service Worker Installed");
 
     //install event is going to wait until the waitUntil promise is completed
     event.waitUntil(
@@ -43,7 +43,7 @@ self.addEventListener("install", function (event) {
 
 //activating the service worker
 self.addEventListener("activate", function (event) {
-    console.log("Service WorkeR Activated");
+    console.log("Service Worker Activated");
 
     //we're now going to remove everything in cache that doesn't correspond the current cacheName
     event.waitUntil(
